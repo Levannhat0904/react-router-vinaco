@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Header.css";
+import { NavLink } from "react-router-dom";
 // Định nghĩa danh sách các liên kết
 const headerList = [
   {
@@ -30,7 +31,7 @@ const Header = () => {
     <nav id="header">
       <ul className="header_navbar-list">
         <li className="header_navbar-item">
-          <img src="logo.png" alt="logo_theBox" />
+          <img src="/logo.png" alt="logo_theBox" />
         </li>
         <li className="header_navbar-item text-italic text-bold">The</li>
         <div>Box</div>
@@ -38,7 +39,15 @@ const Header = () => {
       <ul className="header_navbar-list">
         {headerList.map((item, index) => (
           <li key={index}>
-            <Link to={item.path}>{item.label}</Link>{" "}
+            <NavLink
+             to={item.path}
+             className={({isActive})=>{
+              const activeClass = isActive?'active':''
+              return activeClass
+             }}
+             >
+              {item.label}
+            </NavLink>{" "}
           </li>
         ))}
       </ul>
