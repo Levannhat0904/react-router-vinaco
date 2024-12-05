@@ -1,7 +1,4 @@
-import { Link, Outlet, Routes, Route } from "react-router-dom";
-import ProjectList from "./projectList";
-import ProjectAdd from "./projectAdd";
-import ProjectItem from "./projectList/projectItem";
+import { Link, Outlet} from "react-router-dom";
 function Project() {
   return (
     <>
