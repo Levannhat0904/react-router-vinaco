@@ -23,6 +23,10 @@ const headerList = [
     label: "Contact Us",
     path: "/contact",
   },
+  {
+    label: "User",
+    path: "/admin",
+  },
 ];
 
 const Header = () => {

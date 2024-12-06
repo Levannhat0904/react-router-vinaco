@@ -1,14 +1,18 @@
-import Home from "../page/home";
-import Contact from "../page/contact";
-import About from "../page/about";
-import Project from "../page/projects";
-import Service from "../page/services";
-import Header from "../components/Header"; // Import Header component
-import AboutItem from "../page/about/aboutItem";
-import Error404 from "../page/error404";
-import ProjectList from "../page/projects/projectList";
-import ProjectAdd from "../page/projects/projectAdd";
-import ProjectItem from "../page/projects/projectList/projectItem";
+import Home from "../components/page/home";
+import Contact from "../components/page/contact";
+import About from "../components/page/about";
+import Project from "../components/page/projects";
+import Service from "../components/page/services";
+import AboutItem from "../components/page/about/aboutItem";
+import Error404 from "../components/page/error404";
+import ProjectList from "../components/page/projects/projectList";
+import ProjectAdd from "../components/page/projects/projectAdd";
+import ProjectItem from "../components/page/projects/projectList/projectItem";
+import User from "../components/page/user";
+import ChangePassword from "../components/page/user/changePassword";
+import Profile from "../components/page/user/profile";
+import PrivateRoute from "../components/page/user/PrivateRoute";
+import Login from "../components/page/user/Login";
 export const routes = [
   {
     path: "/",
@@ -50,8 +54,34 @@ export const routes = [
     path: "/contact",
     element: <Contact />,
   },
+
+  {
+    path: "/admin",
+    element: <PrivateRoute />, // Protect the /admin route and its children
+    children: [
+      {
+        path: "",
+        element: <User />, // Main user route
+        children: [
+          {
+            path: "profile", // Profile is a child of User
+            element: <Profile />,
+          },
+          {
+            path: "change-password", // ChangePassword is a child of User
+            element: <ChangePassword />,
+          },
+        ],
+      },
+    ],
+  },
+
   {
     path: "*",
     element: <Error404 />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ];
