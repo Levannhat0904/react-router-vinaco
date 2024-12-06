@@ -13,6 +13,7 @@ import ChangePassword from "../components/page/user/changePassword";
 import Profile from "../components/page/user/profile";
 import PrivateRoute from "../components/page/user/PrivateRoute";
 import Login from "../components/page/user/Login";
+import { CounterApp } from "../components/page/redux";
 export const routes = [
   {
     path: "/",
@@ -53,6 +54,9 @@ export const routes = [
   {
     path: "/contact",
     element: <Contact />,
+  },{
+    path: "/redux",
+    element: < CounterApp/>,
   },
 
   {
